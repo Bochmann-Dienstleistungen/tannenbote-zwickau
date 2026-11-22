@@ -119,6 +119,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 <input type="hidden" name="_subject" value="🎄 Tannenbote – neue Reservierung">
 <p hidden><label>Nicht ausfüllen <input name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
 <input type="hidden" name="gesamtpreis" id="gesamtpreis">
+<input type="hidden" name="quelle" id="quelle">
 
 <div class="lbl" id="l-groesse">1 · Größe wählen</div>
 <div class="cards" role="radiogroup" aria-labelledby="l-groesse">
@@ -212,6 +213,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
   if(!form.querySelector('input[name=termin]:checked')&&open)open.checked=true;
   if(!open){var b=document.getElementById('send');b.disabled=true;b.textContent='Saison ausgebucht';}
   form.addEventListener('change',calc);calc();
+  try{var q=new URLSearchParams(location.search),src=[q.get('utm_source'),q.get('utm_content')].filter(Boolean).join(' / ');if(src)sessionStorage.setItem('tb_src',src);document.getElementById('quelle').value=sessionStorage.getItem('tb_src')||(document.referrer?'Verweis: '+document.referrer.split('/')[2]:'direkt');}catch(e){}
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
     var total=calc(),btn=document.getElementById('send');
