@@ -158,7 +158,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 <div id="lines"></div>
 <div class="tot"><span>Gesamt</span><b id="total">99 €</b></div>
 <button class="btn btn-c" type="submit" id="send">Liefertermin reservieren</button>
-<p class="small">Du zahlst noch nichts. Den Zahlungslink (PayPal oder Überweisung) bekommst du per WhatsApp – fest gebucht ist dein Termin, sobald die Zahlung da ist.</p>
+<p class="small">Du zahlst noch nichts. Den Zahlungslink (PayPal oder Überweisung) bekommst du per WhatsApp – fest gebucht ist dein Termin, sobald die Zahlung da ist. Alle Preise sind Endpreise – gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
 <div class="err" id="err" role="alert">Das hat leider nicht geklappt. Bitte versuch es gleich noch mal oder schreib uns auf <a href="https://instagram.com/tannenbotezwickau" target="_blank" rel="noopener">Instagram</a>.</div>
 <div class="ok" id="ok" role="status" tabindex="-1"><b>Dein Termin ist reserviert!</b><p style="margin:6px 0 0;color:var(--lt);line-height:1.5">Wir melden uns innerhalb von 24 Stunden per WhatsApp mit dem Zahlungslink.</p></div>
 </aside>
@@ -188,7 +188,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 (function(){
   var cb=document.getElementById('cb'),c=null;
   try{c=localStorage.getItem('tb_consent');}catch(e){}
-  if(!c)cb.style.display='flex';
+  if(!c&&/^\d+$/.test(PIXEL_ID))cb.style.display='flex';
   function set(v){try{localStorage.setItem('tb_consent',v);}catch(e){}cb.style.display='none';if(v==='yes')loadPixel();}
   document.getElementById('cb-yes').onclick=function(){set('yes');};
   document.getElementById('cb-no').onclick=function(){set('no');};
