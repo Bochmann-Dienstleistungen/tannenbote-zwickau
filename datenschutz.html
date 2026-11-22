@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutz – Tannenbote Zwickau</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317442B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2l5 7h-3l4 6h-3l3 5H6l3-5H6l4-6H7z'/%3E%3Cpath d='M12 20v2'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:Inter;src:url(fonts/Inter-Regular.otf);font-weight:400}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#102017;line-height:1.65}
+main{max-width:760px;margin:0 auto;padding:56px 24px}
+a{color:#17442B}h1{font-size:36px;margin:0 0 24px}h2{font-size:20px;margin:32px 0 8px}
+button{min-height:44px;padding:0 18px;border-radius:999px;border:2px solid #17442B;background:#fff;color:#17442B;font:inherit;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<p><a href="./">← Zurück zur Startseite</a></p>
+<h1>Datenschutzerklärung</h1>
+
+<h2>1. Verantwortlicher</h2>
+<p>Frederic Bochmann, Bochmann Dienstleistungen, Karl-Kippenhahn-Straße 17, 08058 Zwickau<br>E-Mail: <a href="mailto:info@bochmann-dienstleistungen.de">info@bochmann-dienstleistungen.de</a> · Telefon: <a href="tel:+4915254190819">0152 54190819</a></p>
+
+<h2>2. Hosting</h2>
+<p>Diese Website wird über GitHub Pages der GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Niederlande (Konzernmutter GitHub, Inc., USA) bereitgestellt. Beim Aufruf verarbeitet GitHub technisch notwendige Daten (z. B. IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp), um die Website auszuliefern und abzusichern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Die Übermittlung in die USA erfolgt auf Grundlage des EU-US Data Privacy Framework bzw. von Standardvertragsklauseln.</p>
+
+<h2>3. Reservierungsformular</h2>
+<p>Wenn du einen Liefertermin reservierst, verarbeiten wir die von dir angegebenen Daten (Name, WhatsApp-Nummer, Lieferadresse, Hinweise, gewählte Größe, Extras und Termin), um deine Reservierung zu bearbeiten, dich per WhatsApp zu kontaktieren und den Baum zu liefern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung und -erfüllung). Die Formulardaten werden über den Dienst Formspree (Formspree, Inc., USA) an uns per E-Mail übermittelt und dort gespeichert; die Übermittlung in die USA erfolgt auf Grundlage von Standardvertragsklauseln. Wir löschen die Daten, sobald sie nicht mehr erforderlich sind, spätestens nach Ablauf gesetzlicher Aufbewahrungsfristen.</p>
+
+<h2>4. Kommunikation per WhatsApp</h2>
+<p>Für die Abstimmung (Zahlungslink, Foto deines Baums, Liefertermin) nutzen wir WhatsApp der WhatsApp Ireland Ltd. (Teil des Meta-Konzerns). Dabei werden deine Telefonnummer und Metadaten der Kommunikation über WhatsApp verarbeitet; eine Übermittlung in die USA ist möglich (EU-US Data Privacy Framework). Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+<h2>5. Zahlung</h2>
+<p>Bei Zahlung per PayPal werden die für die Zahlung nötigen Daten an die PayPal (Europe) S.à r.l. et Cie, S.C.A., Luxemburg übermittelt. Bei Überweisung verarbeiten wir die Angaben aus dem Zahlungseingang. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+<h2>6. Meta Pixel (nur mit Einwilligung)</h2>
+<p>Nur wenn du im Cookie-Hinweis einwilligst, laden wir den Meta Pixel der Meta Platforms Ireland Ltd. Damit messen wir, wie viele Besucher über unsere Werbung kommen und eine Reservierung absenden. Dabei können Daten wie IP-Adresse, Browserinformationen und dein Verhalten auf der Seite an Meta übermittelt werden, auch in die USA (EU-US Data Privacy Framework). Rechtsgrundlage ist deine Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Du kannst sie jederzeit widerrufen:</p>
+<p>Deine Entscheidung im Cookie-Hinweis speichern wir im lokalen Speicher (localStorage) deines Browsers, damit der Hinweis nicht bei jedem Besuch erneut erscheint.</p>
+<p><button type="button" id="revoke">Einwilligung widerrufen</button> <span id="revoked" role="status" style="margin-left:8px"></span></p>
+<script>
+document.getElementById('revoke').onclick=function(){
+  try{localStorage.setItem('tb_consent','no')}catch(e){}
+  ['_fbp','_fbc'].forEach(function(n){document.cookie=n+'=; Max-Age=0; path=/';document.cookie=n+'=; Max-Age=0; path=/; domain='+location.hostname;document.cookie=n+'=; Max-Age=0; path=/; domain=.'+location.hostname;});
+  document.getElementById('revoked').textContent='Erledigt – der Meta Pixel wird nicht mehr geladen.';
+};
+</script>
+
+<h2>7. Schriftarten</h2>
+<p>Die Schriftarten werden lokal von unserem Server geladen. Es findet keine Verbindung zu Google statt.</p>
+
+<h2>8. Deine Rechte</h2>
+<p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, eine erteilte Einwilligung jederzeit zu widerrufen. Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim Sächsischen Datenschutz- und Transparenzbeauftragten.</p>
+</main>
+</body>
+</html>
