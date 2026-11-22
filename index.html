@@ -146,11 +146,11 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 <div class="card">
 <div class="lbl">4 · Deine Daten</div>
 <div class="row" style="align-items:stretch">
-<label class="f">Name<input name="name" autocomplete="name" required placeholder="Vor- und Nachname"></label>
-<label class="f">WhatsApp-Nummer<input name="whatsapp" type="tel" autocomplete="tel" required placeholder="Für das Foto deines Baums"></label>
+<label class="f">Name<input name="name" autocomplete="name" required minlength="5" maxlength="80" placeholder="Vor- und Nachname"></label>
+<label class="f">WhatsApp-Nummer<input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required maxlength="25" placeholder="z. B. 0152 12345678"></label>
 </div>
-<label class="f">Lieferadresse<input name="adresse" autocomplete="street-address" required placeholder="Straße, Hausnummer, PLZ, Ort"></label>
-<label class="f">Etage / Hinweise<input name="hinweise" placeholder="z. B. 3. OG, kein Aufzug"></label>
+<label class="f">Lieferadresse<input name="adresse" autocomplete="street-address" required minlength="10" maxlength="150" placeholder="Straße Nr., PLZ Ort"></label>
+<label class="f">Etage / Hinweise<input name="hinweise" maxlength="200" placeholder="z. B. 3. OG, kein Aufzug"></label>
 <label class="chk"><input type="checkbox" name="datenschutz" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung gespeichert und ich per WhatsApp kontaktiert werde. <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a></span></label>
 </div>
 <aside class="sum">
@@ -213,6 +213,30 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
   if(!form.querySelector('input[name=termin]:checked')&&open)open.checked=true;
   if(!open){var b=document.getElementById('send');b.disabled=true;b.textContent='Saison ausgebucht';}
   form.addEventListener('change',calc);calc();
+  (function(){
+    var L="A-Za-zÀ-ÖØ-öø-ÿĀ-žß";
+    function chkName(v){v=v.trim().replace(/\s+/g,' ');
+      if(!new RegExp("^["+L+".'’\\- ]+$").test(v))return 'Bitte nur Buchstaben verwenden (keine Zahlen oder Sonderzeichen).';
+      if(!new RegExp("["+L+"]{2,}\\.?\\s+.*["+L+"]{2,}").test(v)&&!new RegExp("["+L+"]\\.?\\s+["+L+"]{2,}").test(v))return 'Bitte Vor- und Nachnamen angeben.';
+      return '';}
+    function chkTel(v){var n=v.replace(/[\s\-\/().]/g,'');
+      if(/^(\+49|0049|0)1[5-7]\d{7,9}$/.test(n))return '';
+      if(/^(\+|00)(?!49)[1-9]\d{7,13}$/.test(n))return '';
+      if(/^(\+49|0049|0)[2-9]/.test(n))return 'Bitte eine Handynummer angeben – wir schicken dir das Foto per WhatsApp.';
+      return 'Bitte eine gültige Handynummer angeben, z. B. 0152 12345678.';}
+    function chkAdr(v){v=v.trim();var m=v.match(/(^|\D)(\d{5})(?!\d)/);
+      if(!m)return 'Bitte die Postleitzahl (5 Ziffern) mit angeben.';
+      var plz=m[2],i=v.indexOf(plz),vor=v.slice(0,i),nach=v.slice(i+5);
+      if(!new RegExp("["+L+"]{3,}").test(vor)||!/\d+\s?[a-zA-Z]?\b/.test(vor))return 'Bitte Straße und Hausnummer angeben, z. B. Hauptstraße 12, 08056 Zwickau.';
+      if(!new RegExp("["+L+"]{2,}").test(nach))return 'Bitte den Ort nach der Postleitzahl angeben.';
+      if(!/^0[89]/.test(plz))return 'Wir liefern nur in Zwickau und Umgebung. Bei Fragen schreib uns gern auf Instagram.';
+      return '';}
+    [['name',chkName],['whatsapp',chkTel],['adresse',chkAdr]].forEach(function(x){
+      var el=form.elements[x[0]];
+      function run(){el.setCustomValidity(el.value.trim()?x[1](el.value):'');}
+      el.addEventListener('input',run);el.addEventListener('blur',function(){el.value=el.value.trim().replace(/\s{2,}/g,' ');run();});run();
+    });
+  })();
   try{var q=new URLSearchParams(location.search),src=[q.get('utm_source'),q.get('utm_content')].filter(Boolean).join(' / ');if(src)sessionStorage.setItem('tb_src',src);document.getElementById('quelle').value=sessionStorage.getItem('tb_src')||(document.referrer?'Verweis: '+document.referrer.split('/')[2]:'direkt');}catch(e){}
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
