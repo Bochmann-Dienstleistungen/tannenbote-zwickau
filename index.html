@@ -81,6 +81,8 @@ h2{margin:0 0 28px;font-weight:700;font-size:clamp(28px,4vw,44px)}
 .faq{max-width:820px}.faq div{border-bottom:1px solid #E3E8E2;padding:0 0 20px;margin-bottom:20px}.faq h3{margin:0 0 6px;font-size:18px}.faq p{margin:0;color:var(--mut);line-height:1.6}
 footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:36px;padding-bottom:36px}footer a{color:var(--lt);margin-right:18px;display:inline-block;padding:10px 0}
 @media (max-width:860px){.sum{position:static}}
+.waq{margin:14px 0 0;font-size:17px}.waq a{font-weight:700;color:var(--g)}
+@media (max-width:600px){.cards{gap:10px}.lbl{margin:26px 0 10px}.opt{flex-basis:100%}.opt .box{padding:14px 16px;gap:4px;border-radius:14px}.opt .h{font-size:21px}.opt .h[style]{font-size:18px!important}.opt .box .s:nth-child(3){display:none}.opt .p{font-size:19px}.grid2{margin-top:26px;gap:16px}.card{padding:20px}}
 </style>
 </head>
 <body>
@@ -96,7 +98,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 <p>Frische Nordmanntannen aus der Region. Du wählst die Größe, wir suchen deinen Baum persönlich auf der Plantage aus und schicken dir vorab ein Foto per WhatsApp.</p>
 <div class="row">
 <a class="btn btn-c" href="#reservieren">Jetzt Liefertermin sichern</a>
-<a class="btn btn-o" href="https://instagram.com/tannenbotezwickau" target="_blank" rel="noopener">Per Instagram anfragen</a>
+<a class="btn btn-o" href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunsch-Wochenende%3A%20" target="_blank" rel="noopener">Per WhatsApp reservieren</a>
 <span style="color:var(--lt)">ab 79 € inkl. Lieferung</span>
 </div>
 <div class="trust"><span>Von Hand ausgesucht</span><span>Foto deines Baums vorab</span><span>Bis in die Wohnung getragen</span></div>
@@ -114,6 +116,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 <section class="order" id="reservieren"><div class="wrap">
 <h2 style="margin-bottom:8px">Reservier dir deinen Liefertermin</h2>
 <p style="margin:0;color:var(--mut);font-size:17px">Alle Preise inklusive Lieferung bis in die Wohnung – egal welche Etage. Termine sind begrenzt.</p>
+<p class="waq">Keine Lust auf Formular? <a href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunsch-Wochenende%3A%20" target="_blank" rel="noopener">Schreib uns einfach per WhatsApp →</a></p>
 
 <form name="reservierung" method="POST" action="https://formspree.io/f/mlgpooqw" id="form">
 <input type="hidden" name="_subject" value="🎄 Tannenbote – neue Reservierung">
@@ -146,11 +149,11 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 <div class="card">
 <div class="lbl">4 · Deine Daten</div>
 <div class="row" style="align-items:stretch">
-<label class="f">Name<input name="name" autocomplete="name" required minlength="5" maxlength="80" placeholder="Vor- und Nachname"></label>
+<label class="f">Name<input name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Dein Name"></label>
 <label class="f">WhatsApp-Nummer<input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required maxlength="25" placeholder="z. B. 0152 12345678"></label>
 </div>
-<label class="f">Lieferadresse<input name="adresse" autocomplete="street-address" required minlength="10" maxlength="150" placeholder="Straße Nr., PLZ Ort"></label>
-<label class="f">Etage / Hinweise<input name="hinweise" maxlength="200" placeholder="z. B. 3. OG, kein Aufzug"></label>
+<label class="f">PLZ und Ort<input name="plz_ort" autocomplete="off" required maxlength="60" placeholder="z. B. 08056 Zwickau"></label>
+<label class="f">Straße &amp; Etage <span style="font-weight:400;color:var(--mut)">(optional – klären wir sonst per WhatsApp)</span><input name="hinweise" autocomplete="street-address" maxlength="200" placeholder="z. B. Hauptstr. 12, 3. OG, kein Aufzug"></label>
 <label class="chk"><input type="checkbox" name="datenschutz" required><span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Reservierung gespeichert und ich per WhatsApp kontaktiert werde. <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a></span></label>
 </div>
 <aside class="sum">
@@ -159,7 +162,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 <div class="tot"><span>Gesamt</span><b id="total">99 €</b></div>
 <button class="btn btn-c" type="submit" id="send">Liefertermin reservieren</button>
 <p class="small">Du zahlst noch nichts. Den Zahlungslink (PayPal oder Überweisung) bekommst du per WhatsApp – fest gebucht ist dein Termin, sobald die Zahlung da ist. Alle Preise sind Endpreise – gemäß § 19 UStG wird keine Umsatzsteuer berechnet.</p>
-<div class="err" id="err" role="alert">Das hat leider nicht geklappt. Bitte versuch es gleich noch mal oder schreib uns auf <a href="https://instagram.com/tannenbotezwickau" target="_blank" rel="noopener">Instagram</a>.</div>
+<div class="err" id="err" role="alert">Das hat leider nicht geklappt. Bitte versuch es gleich noch mal oder schreib uns per <a href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunsch-Wochenende%3A%20" target="_blank" rel="noopener">WhatsApp</a>.</div>
 <div class="ok" id="ok" role="status" tabindex="-1"><b>Dein Termin ist reserviert!</b><p style="margin:6px 0 0;color:var(--lt);line-height:1.5">Wir melden uns innerhalb von 24 Stunden per WhatsApp mit dem Zahlungslink.</p></div>
 </aside>
 </div>
@@ -216,8 +219,8 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
   (function(){
     var L="A-Za-zÀ-ÖØ-öø-ÿĀ-žß";
     function chkName(v){v=v.trim().replace(/\s+/g,' ');
-      if(!new RegExp("^["+L+".'’\\- ]+$").test(v))return 'Bitte nur Buchstaben verwenden (keine Zahlen oder Sonderzeichen).';
-      if(!new RegExp("["+L+"]{2,}\\.?\\s+.*["+L+"]{2,}").test(v)&&!new RegExp("["+L+"]\\.?\\s+["+L+"]{2,}").test(v))return 'Bitte Vor- und Nachnamen angeben.';
+      if(!new RegExp("^["+L+".'’\\- ]+$").test(v))return 'Bitte nur Buchstaben verwenden.';
+      if(!new RegExp("["+L+"]{2,}").test(v))return 'Bitte deinen Namen angeben.';
       return '';}
     function chkTel(v){var n=v.replace(/[\s\-\/().]/g,'');
       if(/^(\+49|0049|0)1[5-7]\d{7,9}$/.test(n))return '';
@@ -225,13 +228,10 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
       if(/^(\+49|0049|0)[2-9]/.test(n))return 'Bitte eine Handynummer angeben – wir schicken dir das Foto per WhatsApp.';
       return 'Bitte eine gültige Handynummer angeben, z. B. 0152 12345678.';}
     function chkAdr(v){v=v.trim();var m=v.match(/(^|\D)(\d{5})(?!\d)/);
-      if(!m)return 'Bitte die Postleitzahl (5 Ziffern) mit angeben.';
-      var plz=m[2],i=v.indexOf(plz),vor=v.slice(0,i),nach=v.slice(i+5);
-      if(!new RegExp("["+L+"]{3,}").test(vor)||!/\d+\s?[a-zA-Z]?\b/.test(vor))return 'Bitte Straße und Hausnummer angeben, z. B. Hauptstraße 12, 08056 Zwickau.';
-      if(!new RegExp("["+L+"]{2,}").test(nach))return 'Bitte den Ort nach der Postleitzahl angeben.';
-      if(!/^0[89]/.test(plz))return 'Wir liefern nur in Zwickau und Umgebung. Bei Fragen schreib uns gern auf Instagram.';
+      if(!m)return 'Bitte deine Postleitzahl (5 Ziffern) angeben, z. B. 08056 Zwickau.';
+      if(!/^0[89]/.test(m[2]))return 'Wir liefern nur in Zwickau und Umgebung. Bei Fragen schreib uns gern per WhatsApp.';
       return '';}
-    [['name',chkName],['whatsapp',chkTel],['adresse',chkAdr]].forEach(function(x){
+    [['name',chkName],['whatsapp',chkTel],['plz_ort',chkAdr]].forEach(function(x){
       var el=form.elements[x[0]];
       function run(){el.setCustomValidity(el.value.trim()?x[1](el.value):'');}
       el.addEventListener('input',run);el.addEventListener('blur',function(){el.value=el.value.trim().replace(/\s{2,}/g,' ');run();});run();
