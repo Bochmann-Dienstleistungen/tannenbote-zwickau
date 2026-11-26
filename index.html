@@ -74,6 +74,15 @@ h2{margin:0 0 28px;font-weight:700;font-size:clamp(28px,4vw,44px)}
 footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:36px;padding-bottom:36px}footer a{color:var(--lt);margin-right:18px;display:inline-block;padding:10px 0}
 @media (max-width:860px){.sum{position:static}}
 .warn{display:flex;gap:12px;align-items:flex-start;margin:0 0 12px;padding:14px 16px;border-radius:14px;background:#FFF4D6;border:1.5px solid #E8B93C;color:#4A3500;font-size:15px;line-height:1.5}.warn p{margin:0}.warn span{font-size:20px;line-height:1.2}
+.req{font-style:normal;color:#B42318}
+.f.bad input,.chk.bad input{border-color:#D92D20;background:#FEF3F2;box-shadow:0 0 0 3px rgba(217,45,32,.15)}
+.cards.bad .opt .box{border-color:#D92D20}
+.chk.bad{color:#B42318;background:#FEF3F2;border:1.5px solid #D92D20;border-radius:12px;padding:10px 12px}
+.f,.cards,.chk{scroll-margin-top:96px}
+.emsg{margin:6px 0 0;color:#B42318;font-size:14px;font-weight:600}
+.emsg::before{content:"⚠ "}
+.shake{animation:shake .4s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 .waq{margin:14px 0 0;font-size:17px}.waq a{font-weight:700;color:var(--g)}
 @media (max-width:600px){.cards{gap:10px}.lbl{margin:26px 0 10px}.opt{flex-basis:100%}.opt .box{padding:14px 16px;gap:4px;border-radius:14px}.opt .h{font-size:21px}.opt .h[style]{font-size:18px!important}.opt .box .s:nth-child(3){display:none}.opt .p{font-size:19px}.grid2{margin-top:26px;gap:16px}.card{padding:20px}}
 /* ===== Neu 26.11.: lebendige Version ===== */
@@ -226,7 +235,7 @@ html{scroll-behavior:smooth}
 <p style="margin:0;color:var(--mut);font-size:17px">Alle Preise inklusive Lieferung bis in die Wohnung, egal welche Etage. Pro Tag haben wir nur begrenzt Termine.</p>
 <p class="waq">Lieber per WhatsApp? Wähl unten deinen Baum aus und tipp am Ende auf <b>„Per WhatsApp senden“</b>. Die Nachricht ist dann schon fertig geschrieben.</p>
 
-<form name="reservierung" method="POST" action="https://formspree.io/f/mlgpooqw" id="form">
+<form name="reservierung" method="POST" action="https://formspree.io/f/mlgpooqw" id="form" novalidate>
 <input type="hidden" name="_subject" value="🎄 Tannenbote – neue Reservierung">
 <p hidden><label>Nicht ausfüllen <input name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
 <input type="hidden" name="gesamtpreis" id="gesamtpreis">
@@ -267,10 +276,10 @@ html{scroll-behavior:smooth}
 <div class="card">
 <div class="lbl">4 · Deine Daten</div>
 <div class="row" style="align-items:stretch">
-<label class="f">Name<input name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Dein Name"></label>
-<label class="f">WhatsApp-Nummer<input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required maxlength="25" placeholder="z. B. 0152 12345678"></label>
+<label class="f"><span>Name <i class="req">*</i></span><input name="name" autocomplete="name" required minlength="2" maxlength="80" placeholder="Dein Name"></label>
+<label class="f"><span>WhatsApp-Nummer <i class="req">*</i></span><input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required maxlength="25" placeholder="z. B. 0152 12345678"></label>
 </div>
-<label class="f">PLZ und Ort<input name="plz_ort" autocomplete="off" required maxlength="60" placeholder="z. B. 08056 Zwickau"></label>
+<label class="f"><span>PLZ und Ort <i class="req">*</i></span><input name="plz_ort" autocomplete="off" required maxlength="60" placeholder="z. B. 08056 Zwickau"></label>
 <label class="f">Straße &amp; Etage <span style="font-weight:400;color:var(--mut)">(optional – klären wir sonst per WhatsApp)</span><input name="hinweise" autocomplete="street-address" maxlength="200" placeholder="z. B. Hauptstr. 12, 3. OG, kein Aufzug"></label>
 <p style="margin:0;font-size:14px;line-height:1.5;color:var(--mut)">Wir nutzen deine Angaben nur für diese Reservierung und melden uns per WhatsApp. Mehr dazu in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
 </div>
@@ -416,8 +425,7 @@ html{scroll-behavior:smooth}
   if(!open){var b=document.getElementById('send');b.disabled=true;b.textContent='Saison ausgebucht';}
   form.addEventListener('change',calc);calc();
   document.getElementById('wa-send').addEventListener('click',function(){
-    var r1=form.querySelector('#st-passt');if(!form.querySelector('input[name=staender]:checked')){r1.reportValidity();return;}
-    if(!stCb.reportValidity())return;
+    if(!window.tbCheck([form.querySelector('#st-passt'),stCb].filter(function(e){return !e.closest('[hidden]');})))return;
     var g=form.querySelector('input[name=groesse]:checked'),t=form.querySelector('input[name=termin]:checked');
     var ex=[].map.call(form.querySelectorAll('input[type=checkbox][data-p]:checked'),function(e){return e.dataset.n+' (+'+e.dataset.p+' €)';});
     var v=function(n){var e=form.elements[n];return e&&e.value.trim();};
@@ -462,8 +470,22 @@ html{scroll-behavior:smooth}
     });
   })();
   try{var q=new URLSearchParams(location.search),src=[q.get('utm_source'),q.get('utm_content')].filter(Boolean).join(' / ');document.getElementById('quelle').value=src||(document.referrer?'Verweis: '+document.referrer.split('/')[2]:'direkt');}catch(e){}
+  // Pflichtfelder sichtbar machen: rot + Hinweis + hinscrollen
+  var MSG={name:'Bitte gib deinen Namen ein.',whatsapp:'Bitte gib deine WhatsApp-Nummer ein.',plz_ort:'Bitte gib PLZ und Ort ein.',staender:'Bitte wähl aus, ob dein Ständer passt.',staender_bestaetigt:'Bitte bestätige, dass dein Ständer passt.',groesse:'Bitte wähl eine Größe.',termin:'Bitte wähl einen Liefertermin.'};
+  function holder(el){return el.type==='radio'?form.querySelector('[aria-labelledby="'+el.closest('[role=radiogroup]').getAttribute('aria-labelledby')+'"]'):el.closest('label');}
+  function mark(el){var h=holder(el),m=h.nextElementSibling&&h.nextElementSibling.classList.contains('emsg')?h.nextElementSibling:null;
+    if(el.checkValidity()){h.classList.remove('bad');if(m)m.remove();return true;}
+    h.classList.add('bad');var t=el.validity.valueMissing?(MSG[el.name]||'Bitte ausfüllen.'):(el.validationMessage||MSG[el.name]);
+    if(!m){m=document.createElement('p');m.className='emsg';m.setAttribute('role','alert');h.parentNode.insertBefore(m,h.nextSibling);}m.textContent=t;return false;}
+  function check(list){var first=null,seen={};list.forEach(function(el){if(el.type==='radio'){if(seen[el.name])return;seen[el.name]=1;}if(!mark(el)&&!first)first=el;});
+    if(first){var h=holder(first);h.scrollIntoView({behavior:'smooth',block:'start'});h.classList.remove('shake');void h.offsetWidth;h.classList.add('shake');if(first.type!=='radio')setTimeout(function(){first.focus({preventScroll:true});},400);return false;}return true;}
+  window.tbCheck=check;
+  form.addEventListener('blur',function(e){var el=e.target;if(el.tagName==='INPUT'&&el.required&&el.value.trim())mark(el);},true);
+  form.addEventListener('input',function(e){var h=e.target.closest('label');if(h&&h.classList.contains('bad'))mark(e.target);});
+  form.addEventListener('change',function(e){var el=e.target;if(el.name&&MSG[el.name]){var h=holder(el);if(h&&h.classList.contains('bad'))mark(el);}});
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
+    if(!check([].filter.call(form.querySelectorAll('input[required]'),function(e){return !e.closest('[hidden]');})))return;
     var total=calc(),btn=document.getElementById('send');
     var err=document.getElementById('err');err.style.display='none';
     btn.disabled=true;btn.textContent='Wird gesendet …';
