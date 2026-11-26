@@ -26,6 +26,7 @@
 @font-face{font-family:Inter;src:url(fonts/Inter-SemiBold.otf);font-weight:600;font-display:swap}
 @font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700;font-display:swap}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 :root{--g:#17442B;--g2:#24573A;--ink:#102017;--mut:#3E4F44;--bg2:#F1F4EF;--line:#D3DCD5;--sel:#E6F0E8;--cta:#B4521F;--lt:#D5E4D9;--mint:#9FD3AE}
 body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff}
 h1,h2,.disp{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
@@ -72,6 +73,7 @@ h2{margin:0 0 28px;font-weight:700;font-size:clamp(28px,4vw,44px)}
 .faq{max-width:820px}.faq div{border-bottom:1px solid #E3E8E2;padding:0 0 20px;margin-bottom:20px}.faq h3{margin:0 0 6px;font-size:18px}.faq p{margin:0;color:var(--mut);line-height:1.6}
 footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:36px;padding-bottom:36px}footer a{color:var(--lt);margin-right:18px;display:inline-block;padding:10px 0}
 @media (max-width:860px){.sum{position:static}}
+.warn{display:flex;gap:12px;align-items:flex-start;margin:0 0 12px;padding:14px 16px;border-radius:14px;background:#FFF4D6;border:1.5px solid #E8B93C;color:#4A3500;font-size:15px;line-height:1.5}.warn p{margin:0}.warn span{font-size:20px;line-height:1.2}
 .waq{margin:14px 0 0;font-size:17px}.waq a{font-weight:700;color:var(--g)}
 @media (max-width:600px){.cards{gap:10px}.lbl{margin:26px 0 10px}.opt{flex-basis:100%}.opt .box{padding:14px 16px;gap:4px;border-radius:14px}.opt .h{font-size:21px}.opt .h[style]{font-size:18px!important}.opt .box .s:nth-child(3){display:none}.opt .p{font-size:19px}.grid2{margin-top:26px;gap:16px}.card{padding:20px}}
 /* ===== Neu 26.11.: lebendige Version ===== */
@@ -142,7 +144,7 @@ html{scroll-behavior:smooth}
 .msg time{position:absolute;right:10px;bottom:4px;font-size:11px;color:#6b776f}
 .me{margin-left:auto;background:#D9FDD3;border-top-right-radius:4px}
 .them{background:#fff;border-top-left-radius:4px}
-.msg.img{padding:4px 4px 20px}.msg.img img{display:block;width:100%;border-radius:11px;aspect-ratio:3/4;object-fit:cover}
+.msg.img{padding:4px 4px 20px}.msg.img img{display:block;width:100%;border-radius:11px;aspect-ratio:1/1;object-fit:cover}
 .msg.img span{display:block;padding:6px 8px 0}
 .typing{display:inline-flex;gap:4px;padding:12px 14px;background:#fff;border-radius:14px;margin:8px 0;opacity:0;transition:opacity .3s}
 .typing.show{opacity:1}
@@ -176,6 +178,7 @@ html{scroll-behavior:smooth}
 .dock.on{transform:none}
 .dock .btn{flex:1;min-height:52px;box-shadow:0 10px 30px -8px rgba(0,0,0,.45)}
 .dock .btn-wa{flex:0 0 52px;padding:0}
+.sum .btn-wa{min-height:50px;font-size:16px}
 @media (max-width:760px){
   .dock{display:flex}
   footer .wrap{padding-bottom:96px}
@@ -209,19 +212,19 @@ html{scroll-behavior:smooth}
 <div class="bg"><picture><source media="(max-width:760px)" srcset="media/hero-m.webp"><img src="media/hero.webp" alt="Mann trägt eine frische Nordmanntanne über der Schulter" fetchpriority="high"></picture></div>
 <canvas id="snow" aria-hidden="true"></canvas>
 <div class="wrap">
-<span class="kicker fade" style="animation-delay:.05s">Zwickau und Umgebung · Lieferung ab 5. Dezember</span>
+<span class="kicker fade" style="animation-delay:.05s">Zwickau &amp; Umgebung · ab 5. Dezember</span>
 <h1 id="h1">Dein Weihnachtsbaum. <em>Bis ins Wohnzimmer.</em></h1>
 <p class="fade" style="animation-delay:.5s">Nordmanntanne von Hand ausgesucht, Foto vorab per WhatsApp, hochgetragen in jede Etage. <b style="color:#fff">Ab 79 € inkl. Lieferung.</b></p>
 <div class="row fade" style="animation-delay:.7s">
 <a class="btn btn-c" href="#reservieren">Jetzt Liefertermin sichern</a>
-<a class="btn btn-wa" href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunsch-Wochenende%3A%20" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>Per WhatsApp</a>
+<a class="btn btn-wa" href="#reservieren" data-wa="1"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>Per WhatsApp</a>
 </div>
 </div></div>
 
 <section class="order" id="reservieren"><div class="wrap">
 <h2 style="margin-bottom:8px">Reservier dir deinen Liefertermin</h2>
-<p style="margin:0;color:var(--mut);font-size:17px">Alle Preise inklusive Lieferung bis in die Wohnung, egal welche Etage. Pro Wochenende haben wir nur begrenzt Termine.</p>
-<p class="waq">Lieber schreiben? <a href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunsch-Wochenende%3A%20" target="_blank" rel="noopener">Schreib uns einfach per WhatsApp →</a></p>
+<p style="margin:0;color:var(--mut);font-size:17px">Alle Preise inklusive Lieferung bis in die Wohnung, egal welche Etage. Pro Tag haben wir nur begrenzt Termine.</p>
+<p class="waq">Lieber per WhatsApp? Wähl unten deinen Baum aus und tipp am Ende auf <b>„Per WhatsApp senden“</b>. Die Nachricht ist dann schon fertig geschrieben.</p>
 
 <form name="reservierung" method="POST" action="https://formspree.io/f/mlgpooqw" id="form">
 <input type="hidden" name="_subject" value="🎄 Tannenbote – neue Reservierung">
@@ -231,24 +234,34 @@ html{scroll-behavior:smooth}
 
 <div class="lbl" id="l-groesse">1 · Größe wählen</div>
 <div class="cards" role="radiogroup" aria-labelledby="l-groesse">
-<label class="opt"><input type="radio" name="groesse" value="1,50–1,75 m (79 €)" data-p="79" data-n="1,50–1,75 m" required><span class="box"><span class="s">Für Wohnung &amp; Ecke</span><span class="h">1,50–1,75 m</span><span class="s">Kompakt und dicht gewachsen.</span><span class="p">79 €</span></span></label>
+<label class="opt"><input type="radio" name="groesse" value="1,50–1,75 m (79 €)" data-p="79" data-n="1,50–1,75 m" required><span class="box"><span class="s">Für kleinere Räume</span><span class="h">1,50–1,75 m</span><span class="s">Kompakt und dicht gewachsen.</span><span class="p">79 €</span></span></label>
 <label class="opt"><input type="radio" name="groesse" value="1,75–2,00 m (89 €)" data-p="89" data-n="1,75–2,00 m" checked><span class="box"><span class="s">Der Klassiker · beliebt</span><span class="h">1,75–2,00 m</span><span class="s">Passt in die meisten Wohnzimmer.</span><span class="p">89 €</span></span></label>
 <label class="opt"><input type="radio" name="groesse" value="2,00–2,50 m (129 €)" data-p="129" data-n="2,00–2,50 m"><span class="box"><span class="s">Für hohe Decken</span><span class="h">2,00–2,50 m</span><span class="s">Für Altbau und hohe Räume.</span><span class="p">129 €</span></span></label>
 </div>
 
 <div class="lbl" id="l-extras">2 · Extras</div>
 <div class="cards" role="group" aria-labelledby="l-extras">
-<label class="opt"><input type="checkbox" name="aufstellen" value="ja (+10 €)" data-p="10" data-n="Aufstellen im Ständer"><span class="box"><span class="h" style="font-size:20px">Aufstellen im Ständer · +10 €</span><span class="s">Wir stellen den Baum gerade auf und nehmen das Netz mit.</span></span></label>
+<label class="opt"><input type="checkbox" name="aufstellen" value="ja (+10 €)" data-p="10" data-n="Aufstellen im Ständer"><span class="box"><span class="h" style="font-size:20px">Aufstellen im Ständer · +10 €</span><span class="s">Wir schneiden den Stamm frisch an, passen ihn an deinen Ständer an und stellen den Baum gerade auf.</span></span></label>
 <label class="opt"><input type="checkbox" name="abholung" value="ja (+19 €)" data-p="19" data-n="Abholung im Januar"><span class="box"><span class="h" style="font-size:20px">Abholung im Januar · +19 €</span><span class="s">Wir holen den Baum nach den Feiertagen aus der Wohnung ab.</span></span></label>
 <label class="opt"><input type="checkbox" name="entfernung" value="ja (+10 €)" data-p="10" data-n="Lieferung über 15 km"><span class="box"><span class="h" style="font-size:20px">Mehr als 15 km von Zwickau · +10 €</span><span class="s">Bis ca. 15 km um Zwickau liefern wir ohne Aufpreis. Wohnst du weiter weg, wähle das bitte an.</span></span></label>
 </div>
 
-<div class="lbl" id="l-termin">3 · Liefer-Wochenende</div>
+<div class="lbl" id="l-st" style="font-size:14px">Dein Christbaumständer</div>
+<div class="warn" role="note"><span aria-hidden="true">⚠️</span><p><b>Achtung: Bitte prüf vorher, ob dein Ständer zum Baum passt.</b> Der Stamm einer Nordmanntanne ist je nach Größe ziemlich dick. Ist dein Ständer zu klein oder kaputt, wähl unten die passende Option. Dann bringen wir Säge oder einen neuen Ständer mit.</p></div>
+<div class="cards" role="radiogroup" aria-labelledby="l-st">
+<label class="opt"><input type="radio" name="staender" value="passt" id="st-passt" required><span class="box"><span class="h" style="font-size:18px">Passt</span><span class="s">Stabil und groß genug.</span></span></label>
+<label class="opt"><input type="radio" name="staender" value="klein oder alt"><span class="box"><span class="h" style="font-size:18px">Eher klein oder alt</span><span class="s">Wir bringen eine Säge mit und passen den Stamm an.</span></span></label>
+<label class="opt"><input type="radio" name="staender" value="habe keinen" id="st-kein"><span class="box"><span class="h" style="font-size:18px">Habe keinen</span><span class="s">Kein Problem. Wir besorgen dir einen und sagen dir den Preis vorher per WhatsApp.</span></span></label>
+</div>
+<label class="chk" id="st-ok" hidden style="margin-top:12px"><input type="checkbox" name="staender_bestaetigt" value="ja, Kunde bestätigt: Ständer passt"><span>Ich bestätige, dass mein Ständer stabil ist und der Baum in der gewählten Größe hineinpasst.</span></label>
+<div class="lbl" id="l-termin">3 · Liefertermin</div>
 <div class="cards" role="radiogroup" aria-labelledby="l-termin">
 <label class="opt"><input type="radio" name="termin" value="Sa/So 5./6. Dez." data-dl="2026-12-03" required><span class="box"><span class="h" style="font-size:20px">Sa/So 5./6. Dez.</span><span class="s">Bestellschluss Do, 3. Dez.</span></span></label>
 <label class="opt"><input type="radio" name="termin" value="Sa/So 12./13. Dez." data-dl="2026-12-10"><span class="box"><span class="h" style="font-size:20px">Sa/So 12./13. Dez.</span><span class="s">Bestellschluss Do, 10. Dez.</span></span></label>
 <label class="opt"><input type="radio" name="termin" value="Sa/So 19./20. Dez." data-dl="2026-12-17"><span class="box"><span class="h" style="font-size:20px">Sa/So 19./20. Dez.</span><span class="s">Bestellschluss Do, 17. Dez.</span></span></label>
+<label class="opt"><input type="radio" name="termin" value="Unter der Woche (Mo–Fr)" data-dl="2026-12-21" id="t-woche"><span class="box"><span class="h" style="font-size:20px">Unter der Woche</span><span class="s">Mo–Fr, auch abends. Ideal bei Schichtarbeit.</span></span></label>
 </div>
+<label class="f" id="f-wunsch" hidden style="margin-top:12px">Wunschtag und Uhrzeit <span style="font-weight:400;color:var(--mut)">(optional, wir stimmen es per WhatsApp ab)</span><input name="wunschtermin" maxlength="80" placeholder="z. B. Mi 9.12. ab 17 Uhr oder Do vormittags"></label>
 
 <div class="grid2">
 <div class="card">
@@ -266,8 +279,10 @@ html{scroll-behavior:smooth}
 <div id="lines"></div>
 <div class="tot"><span>Gesamt</span><b id="total">89 €</b></div>
 <button class="btn btn-c" type="submit" id="send">Liefertermin reservieren</button>
+<button class="btn btn-wa" type="button" id="wa-send"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>Per WhatsApp senden</button>
+<p class="small" style="margin-top:-4px">WhatsApp öffnet sich mit deiner Auswahl als fertige Nachricht. Du musst nur noch auf Senden tippen.</p>
 <p class="small">Du zahlst noch nichts. Den Zahlungslink (PayPal oder Überweisung) bekommst du per WhatsApp – fest gebucht ist dein Termin, sobald die Zahlung da ist. Alle Preise sind Endpreise, gemäß § 19 UStG ohne Umsatzsteuer. Es gilt unsere <a href="widerruf.html" target="_blank" rel="noopener" style="color:#D5E4D9">Widerrufsbelehrung</a>.</p>
-<div class="err" id="err" role="alert">Das hat leider nicht geklappt. Bitte versuch es gleich noch mal oder schreib uns per <a href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunsch-Wochenende%3A%20" target="_blank" rel="noopener">WhatsApp</a>.</div>
+<div class="err" id="err" role="alert">Das hat leider nicht geklappt. Bitte versuch es gleich noch mal oder schreib uns per <a href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunschtermin%3A%20" target="_blank" rel="noopener">WhatsApp</a>.</div>
 <div class="ok" id="ok" role="status" tabindex="-1"><b>Dein Termin ist reserviert!</b><p style="margin:6px 0 0;color:var(--lt);line-height:1.5">Wir melden uns innerhalb von 24 Stunden per WhatsApp mit dem Zahlungslink.</p></div>
 </aside>
 </div>
@@ -288,15 +303,16 @@ html{scroll-behavior:smooth}
 <section class="vorab"><div class="wrap">
 <div class="txt">
 <h2 class="rv">Du siehst deinen Baum, bevor er kommt.</h2>
-<p class="rv d1">Wir suchen deine Nordmanntanne auf der Plantage aus und schicken dir ein Foto per WhatsApp. Gefällt sie dir nicht, nehmen wir eine andere.</p>
-<p class="rv d2">Und wenn sie dir an der Tür doch nicht zusagt, tauschen wir sie direkt vor Ort.</p>
+<p class="rv d1">Wir suchen deine Nordmanntanne auf der Plantage aus und schicken dir ein Foto per WhatsApp. Gefällt sie dir nicht, bekommst du ein Foto von einem zweiten Baum.</p>
+<p class="rv d2">Ist auch der zweite nicht dein Baum, bekommst du dein Geld komplett zurück.</p>
 </div>
 <div class="chat rv" id="chat" aria-label="Beispiel: So sieht das Foto vorab per WhatsApp aus">
 <div class="top"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l5 7h-3l4 6h-3l3 5H6l3-5H6l4-6H7z"/></svg></i><div>Tannenbote Zwickau<small>Beispiel · so läuft's ab</small></div></div>
-<div class="msg them">Hallo! 🌲 Wir sind gerade auf der Plantage. Das wäre deine Tanne, 1,85 m:<time>10:14</time></div>
-<div class="msg them img"><img src="media/foto-vorab.webp" alt="Beispielfoto einer Nordmanntanne" loading="lazy"><span>Passt die so? 😊</span><time>10:14</time></div>
+<div class="msg them img"><img src="media/foto-vorab.webp" alt="Beispielfoto Baum 1" loading="lazy"><span>Hallo! 🌲 Vorschlag 1, 1,85 m. Passt die?</span><time>10:14</time></div>
+<div class="msg me">Hm, etwas zu schmal für uns<time>10:15</time></div>
 <div class="typing" aria-hidden="true"><b></b><b></b><b></b></div>
-<div class="msg me">Die ist perfekt! Bis Samstag 👍<time>10:16</time></div>
+<div class="msg them img"><img src="media/foto-vorab2.webp" alt="Beispielfoto Baum 2" loading="lazy"><span>Kein Problem. Vorschlag 2, etwas voller:</span><time>10:17</time></div>
+<div class="msg me">Die ist perfekt! 👍<time>10:18</time></div>
 </div>
 </div></section>
 
@@ -313,9 +329,10 @@ html{scroll-behavior:smooth}
 <h2>Häufige Fragen</h2>
 <div><h3>Wohin liefert ihr?</h3><p>In Zwickau und Umgebung bis ca. 15 km ohne Aufpreis. Weiter weg liefern wir für 10 € Aufpreis, wähl das einfach bei den Extras an.</p></div>
 <div><h3>Ist die Reservierung schon verbindlich?</h3><p>Nein. Du bekommst einen Zahlungslink per WhatsApp. Erst mit der Zahlung ist dein Termin fest gebucht.</p></div>
-<div><h3>Was, wenn mir der Baum nicht gefällt?</h3><p>Du siehst ihn vorab auf dem Foto. Gefällt er dir bei der Lieferung trotzdem nicht, tauschen wir ihn direkt vor Ort.</p></div>
+<div><h3>Was, wenn mir der Baum nicht gefällt?</h3><p>Du bekommst vorab ein Foto per WhatsApp. Gefällt dir der Baum nicht, schicken wir dir ein Foto von einem zweiten. Passt auch der nicht, bekommst du dein Geld komplett zurück.</p></div>
+<div><h3>Liefert ihr auch unter der Woche?</h3><p>Ja. Wähl einfach „Unter der Woche“ und schreib deinen Wunschtag dazu, auch abends. Den genauen Termin stimmen wir per WhatsApp ab.</p></div>
 <div><h3>Wie frisch sind die Bäume?</h3><p>Wir holen die Bäume erst kurz vor deinem Termin von der Plantage aus der Region.</p></div>
-<div><h3>Brauche ich einen Ständer?</h3><p>Ja, bitte halte deinen Ständer bereit. Mit dem Extra „Aufstellen“ machen wir den Rest.</p></div>
+<div><h3>Brauche ich einen Ständer?</h3><p>Ja. Sag uns im Formular, ob dein Ständer passt, eher klein oder alt ist oder ob du keinen hast. Dann wissen wir vorher Bescheid und bringen Säge oder Ständer mit. Mit dem Extra „Aufstellen“ schneiden wir den Stamm passend zu und stellen den Baum gerade hin.</p></div>
 </div></section>
 
 <footer><div class="wrap">
@@ -325,7 +342,7 @@ html{scroll-behavior:smooth}
 
 <div class="dock" id="dock">
 <a class="btn btn-c" href="#reservieren">Baum reservieren · ab 79 €</a>
-<a class="btn btn-wa" href="https://wa.me/4915254190819?text=Hallo%20Tannenbote%21%20Ich%20m%C3%B6chte%20gern%20einen%20Baum%20reservieren.%20Wunsch-Wochenende%3A%20" target="_blank" rel="noopener" aria-label="Per WhatsApp reservieren"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg></a>
+<a class="btn btn-wa" href="#wa-send" aria-label="Per WhatsApp reservieren"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg></a>
 </div>
 <script>
 (function(){
@@ -354,9 +371,10 @@ html{scroll-behavior:smooth}
     function play(){if(done)return;done=true;
       if(RM){[].forEach.call(items,function(m){m.classList.add('show');});ty.style.display='none';return;}
       setTimeout(function(){items[0].classList.add('show');},300);
-      setTimeout(function(){items[1].classList.add('show');},1200);
-      setTimeout(function(){ty.classList.add('show');},2200);
-      setTimeout(function(){ty.style.display='none';items[2].classList.add('show');},3600);}
+      setTimeout(function(){items[1].classList.add('show');},1500);
+      setTimeout(function(){ty.classList.add('show');},2400);
+      setTimeout(function(){ty.style.display='none';items[2].classList.add('show');},3800);
+      setTimeout(function(){items[3].classList.add('show');},5000);}
     new IntersectionObserver(function(es,o){if(es[0].isIntersecting){play();o.disconnect();}},{threshold:.35}).observe(chat);}
   // Mobile Leiste: zeigen nach dem Hero, ausblenden am Formular
   var dock=document.getElementById('dock'),hero=document.querySelector('.hero'),order=document.getElementById('reservieren'),hv=true,ov=false;
@@ -397,6 +415,31 @@ html{scroll-behavior:smooth}
   if(!form.querySelector('input[name=termin]:checked')&&open)open.checked=true;
   if(!open){var b=document.getElementById('send');b.disabled=true;b.textContent='Saison ausgebucht';}
   form.addEventListener('change',calc);calc();
+  document.getElementById('wa-send').addEventListener('click',function(){
+    var r1=form.querySelector('#st-passt');if(!form.querySelector('input[name=staender]:checked')){r1.reportValidity();return;}
+    if(!stCb.reportValidity())return;
+    var g=form.querySelector('input[name=groesse]:checked'),t=form.querySelector('input[name=termin]:checked');
+    var ex=[].map.call(form.querySelectorAll('input[type=checkbox][data-p]:checked'),function(e){return e.dataset.n+' (+'+e.dataset.p+' €)';});
+    var v=function(n){var e=form.elements[n];return e&&e.value.trim();};
+    var m=['Hallo Tannenbote! 🎄 Ich möchte gern einen Baum reservieren:',''];
+    if(g)m.push('🌲 Nordmanntanne '+g.dataset.n+' ('+g.dataset.p+' €)');
+    m.push('➕ Extras: '+(ex.length?ex.join(', '):'keine'));
+    if(t)m.push('📅 Termin: '+t.value+(t.id==='t-woche'&&v('wunschtermin')?', Wunsch: '+v('wunschtermin'):''));
+    var st=form.querySelector('input[name=staender]:checked');
+    if(st){m.push('🪵 Ständer: '+st.value);
+      if(st.value==='passt')m.push('⚠️ Ich bestätige, dass mein Ständer stabil ist und der Baum in der gewählten Größe hineinpasst.');
+      else if(st.value==='klein oder alt')m.push('⚠️ Mein Ständer ist eher klein oder alt. Bitte Säge mitbringen.');
+      else m.push('⚠️ Ich habe keinen Ständer. Bitte einen mitbringen (Preis vorher per WhatsApp).');}
+    m.push('💶 Gesamt: '+calc()+' €');
+    var d=[v('name'),v('plz_ort'),v('hinweise')].filter(Boolean);
+    if(d.length){m.push('');m.push('📍 '+d.join(', '));}
+    var q=document.getElementById('quelle').value;if(q&&q!=='direkt')m.push('','(Ref: '+q.replace('meta / ','')+')');
+    location.href='https://wa.me/4915254190819?text='+encodeURIComponent(m.join('\n'));
+  });
+  var wun=document.getElementById('f-wunsch');
+  form.addEventListener('change',function(){wun.hidden=!document.getElementById('t-woche').checked;});
+  var stOk=document.getElementById('st-ok'),stCb=stOk.querySelector('input');
+  form.addEventListener('change',function(){var on=document.getElementById('st-passt').checked;stOk.hidden=!on;stCb.required=on;if(!on)stCb.checked=false;});
   (function(){
     var L="A-Za-zÀ-ÖØ-öø-ÿĀ-žß";
     function chkName(v){v=v.trim().replace(/\s+/g,' ');
