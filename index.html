@@ -79,7 +79,7 @@ footer{background:var(--ink);color:#B8CABD;font-size:14px}footer .wrap{display:f
 .cards.bad .opt .box{border-color:#D92D20}
 .chk.bad{color:#B42318;background:#FEF3F2;border:1.5px solid #D92D20;border-radius:12px;padding:10px 12px}
 .f,.cards,.chk{scroll-margin-top:96px}
-.emsg{margin:6px 0 0;color:#B42318;font-size:14px;font-weight:600}
+.emsg{display:block;margin:6px 0 0;color:#B42318;font-size:14px;font-weight:600}
 .emsg::before{content:"⚠ "}
 .shake{animation:shake .4s cubic-bezier(.36,.07,.19,.97)}
 @keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
@@ -473,14 +473,14 @@ html{scroll-behavior:smooth}
   // Pflichtfelder sichtbar machen: rot + Hinweis + hinscrollen
   var MSG={name:'Bitte gib deinen Namen ein.',whatsapp:'Bitte gib deine WhatsApp-Nummer ein.',plz_ort:'Bitte gib PLZ und Ort ein.',staender:'Bitte wähl aus, ob dein Ständer passt.',staender_bestaetigt:'Bitte bestätige, dass dein Ständer passt.',groesse:'Bitte wähl eine Größe.',termin:'Bitte wähl einen Liefertermin.'};
   function holder(el){return el.type==='radio'?form.querySelector('[aria-labelledby="'+el.closest('[role=radiogroup]').getAttribute('aria-labelledby')+'"]'):el.closest('label');}
-  function mark(el){var h=holder(el),m=h.nextElementSibling&&h.nextElementSibling.classList.contains('emsg')?h.nextElementSibling:null;
+  function mark(el,quiet){var h=holder(el),inl=h.classList.contains('f'),m=inl?h.querySelector('.emsg'):(h.nextElementSibling&&h.nextElementSibling.classList.contains('emsg')?h.nextElementSibling:null);
     if(el.checkValidity()){h.classList.remove('bad');if(m)m.remove();return true;}
-    h.classList.add('bad');var t=el.validity.valueMissing?(MSG[el.name]||'Bitte ausfüllen.'):(el.validationMessage||MSG[el.name]);
-    if(!m){m=document.createElement('p');m.className='emsg';m.setAttribute('role','alert');h.parentNode.insertBefore(m,h.nextSibling);}m.textContent=t;return false;}
+    h.classList.add('bad');if(quiet&&!m)return false;var t=el.validity.valueMissing?(MSG[el.name]||'Bitte ausfüllen.'):(el.validationMessage||MSG[el.name]);
+    if(!m){m=document.createElement('span');m.className='emsg';m.setAttribute('role','alert');if(inl)h.appendChild(m);else h.parentNode.insertBefore(m,h.nextSibling);}m.textContent=t;return false;}
   function check(list){var first=null,seen={};list.forEach(function(el){if(el.type==='radio'){if(seen[el.name])return;seen[el.name]=1;}if(!mark(el)&&!first)first=el;});
-    if(first){var h=holder(first);h.scrollIntoView({behavior:'smooth',block:'start'});h.classList.remove('shake');void h.offsetWidth;h.classList.add('shake');if(first.type!=='radio')setTimeout(function(){first.focus({preventScroll:true});},400);return false;}return true;}
+    if(first){var h=holder(first);requestAnimationFrame(function(){h.scrollIntoView({behavior:'smooth',block:'start'});});h.classList.remove('shake');void h.offsetWidth;h.classList.add('shake');if(first.type!=='radio')setTimeout(function(){first.focus({preventScroll:true});},400);return false;}return true;}
   window.tbCheck=check;
-  form.addEventListener('blur',function(e){var el=e.target;if(el.tagName==='INPUT'&&el.required&&el.value.trim())mark(el);},true);
+  form.addEventListener('blur',function(e){var el=e.target;if(el.tagName==='INPUT'&&el.required&&el.value.trim())mark(el,true);},true);
   form.addEventListener('input',function(e){var h=e.target.closest('label');if(h&&h.classList.contains('bad'))mark(e.target);});
   form.addEventListener('change',function(e){var el=e.target;if(el.name&&MSG[el.name]){var h=holder(el);if(h&&h.classList.contains('bad'))mark(el);}});
   form.addEventListener('submit',function(ev){
